@@ -1,9 +1,18 @@
 " Ref: http://dougblack.io/words/a-good-vimrc.html
 
-execute pathogen#infect()
-call pathogen#helptags()
-
-" Douglas Black
+" Vundle install {{{
+set nocompatible              " be iMproved, required
+filetype off                  " required
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" }}}
+" Load plugins {{{
+Plugin 'gmarik/Vundle.vim'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+" }}}
 " Colors {{{
 set background=dark     " light for light background
 colorscheme solarized
@@ -27,10 +36,24 @@ set wildmenu
 "set lazyredraw
 set showmatch           " higlight matching parenthesis
 " }}}
+" Window navigation{{{
+" Easy window navigation
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+" }}}
+" Toggle & Mouse {{{
+" Paste toggle & Mouse
+set pastetoggle=<F2>
+set mouse=a
+" }}}
 " Searching {{{
 set ignorecase          " ignore case when searching
 set incsearch           " search as characters are entered
 set hlsearch            " highlight all matches
+nmap <silent> ,n :nohlsearch<CR>
+
 " }}}
 " Folding {{{
 "=== folding ===
@@ -53,7 +76,7 @@ nnoremap <leader>g :call RunGoFile()<CR>
 vnoremap <leader>y "+y
 inoremap jk <esc>
 " }}}
-" {{{
+" Vim-latex {{{
 " Vim-latex setting
 let g:tex_flavor='latex'
 set iskeyword+=:
@@ -61,6 +84,21 @@ set iskeyword+=:
 " Syntastic {{{
 let g:syntastic_python_flake8_args='--ignore=E501'
 let g:syntastic_ignore_files = ['.java$']
+" }}}
+" Snippest {{{
+" Snippest
+" Track the engine.
+"
+" " Snippets are separated from the engine. Add this if you want them:
+"
+"" Trigger configuration. Do not use <tab> if you use
+"https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
 " }}}
 " Custom Functions {{{
 function! ToggleNumber()
@@ -133,3 +171,7 @@ function! s:NextTextObject(motion, dir)
 endfunction
 " }}}
 
+set foldmethod=marker
+set foldlevel=0
+set modelines=1
+" vim:foldmethod=marker:foldlevel=0
