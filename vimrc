@@ -120,6 +120,14 @@ set laststatus=2
 " NERDTree {{{
 let NERDTreeIgnore = ['\.pyc$', 'build', 'venv', 'egg', 'egg-info/', 'dist', 'docs']
 "}}}
+"Editing{{{
+" Set to auto read when a file is changed from the outside
+set autoread
+" Treat long lines as break lines (useful when moving around in them)
+map j gj
+map k gk
+map <leader>ss :setlocal spell!<cr>0
+"}}}
 set foldmethod=marker
 set foldlevel=0
 set modelines=1
