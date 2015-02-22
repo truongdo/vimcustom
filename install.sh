@@ -44,4 +44,4 @@ wget http://downloads.sourceforge.net/project/vim-latex/snapshots/vim-latex-1.8.
 vim +Helptags
 )
 echo "Install vimrc"
-cp vimrc ~/.vimrc
+wget https://raw.githubusercontent.com/truongdq54/vimcustom/master/vimrc -O ~/.vimrc
