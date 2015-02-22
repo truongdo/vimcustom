@@ -23,6 +23,8 @@ Bundle 'Valloric/YouCompleteMe'
 Bundle 'scrooloose/nerdtree'
 Plugin 'godlygeek/tabular'
 Plugin 'hallison/vim-markdown'
+Plugin 'aperezdc/vim-template'
+
 call vundle#end()                           " required
 filetype plugin indent on
 " }}}
