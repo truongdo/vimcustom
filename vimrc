@@ -20,6 +20,9 @@ Plugin 'scrooloose/syntastic'
 Plugin 'jcf/vim-latex'
 Bundle 'ervandew/supertab'
 Bundle 'Valloric/YouCompleteMe'
+Bundle 'scrooloose/nerdtree'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 call vundle#end()                           " required
 filetype plugin indent on
 " }}}
@@ -75,6 +78,7 @@ set foldlevelstart=10    " start with fold level of 1
 " }}}
 " Leader Shortcuts {{{
 let mapleader=","
+nnoremap <leader>w :NERDTree<CR>
 nnoremap <leader>u :GundoToggle<CR>
 nnoremap <leader>l :call ToggleNumber()<CR>
 nnoremap <leader>a :Ag 
@@ -113,8 +117,12 @@ set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
 " Always show statusline
 set laststatus=2
 "}}}
+" NERDTree {{{
+let NERDTreeIgnore = ['\.pyc$', 'build', 'venv', 'egg', 'egg-info/', 'dist', 'docs']
+"}}}
 set foldmethod=marker
 set foldlevel=0
 set modelines=1
 autocmd FileType c,cpp,java,php autocmd BufWritePre <buffer> :%s/\s\+$//e " remove unwanted whitespace
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 " vim:foldmethod=marker:foldlevel=0
