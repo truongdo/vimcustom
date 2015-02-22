@@ -9,14 +9,24 @@ call vundle#begin()
 " }}}
 " Load plugins {{{
 Plugin 'gmarik/Vundle.vim'
+Plugin 'rking/ag.vim'                       " Search
+Plugin 'jiangmiao/auto-pairs'               " Auto pair {} ()
+Plugin 'sjl/gundo.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
+Plugin 'scrooloose/syntastic'
+Plugin 'jcf/vim-latex'
+Bundle 'ervandew/supertab'
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'bling/vim-airline'                  
+call vundle#end()                           " required
+filetype plugin indent on
 " }}}
 " Colors {{{
+syntax enable           " enable syntax processing
 set background=dark     " light for light background
 colorscheme solarized
-syntax enable           " enable syntax processing
 " }}}
 " Spaces & Tabs {{{
 set tabstop=4           " 4 space tab
@@ -85,90 +95,17 @@ set iskeyword+=:
 let g:syntastic_python_flake8_args='--ignore=E501'
 let g:syntastic_ignore_files = ['.java$']
 " }}}
-" Snippest {{{
-" Snippest
-" Track the engine.
-"
-" " Snippets are separated from the engine. Add this if you want them:
-"
-"" Trigger configuration. Do not use <tab> if you use
-"https://github.com/Valloric/YouCompleteMe.
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<Down>']
+let g:ycm_key_list_previous_completion = ['<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
 let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"                                       
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>" 
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
-" }}}
-" Custom Functions {{{
-function! ToggleNumber()
-    if(&relativenumber == 1)
-        set norelativenumber
-        set number
-    else
-        set relativenumber
-    endif
-endfunc
-
-function! RunTestFile()
-    if(&ft=='python')
-        exec ":!" . ". venv/bin/activate; nosetests " .bufname('%') . " --stop"
-    endif
-endfunction
-
-function! RunGoFile()
-    if(&ft=='go')
-        exec ":new|0read ! go run " . bufname('%')
-    endif
-endfunction
-
-function! RunTestsInFile()
-    if(&ft=='php')
-        :execute "!" . "/Users/dblack/pear/bin/phpunit -d memory_limit=512M -c /usr/local/twilio/src/php/tests/config.xml --bootstrap /usr/local/twilio/src/php/tests/bootstrap.php " . bufname('%') . ' \| grep -v Configuration \| egrep -v "^$" '
-    elseif(&ft=='go')
-        exec ":!gp test"
-    elseif(&ft=='python')
-        exec ":read !" . ". venv/bin/activate; nosetests " . bufname('%') . " --nocapture"
-    endif
-endfunction
-
-" strips trailing whitespace at the end of files. this
-" is called on buffer write in the autogroup above.
-function! <SID>StripTrailingWhitespaces()
-    " save last search & cursor position
-    let _s=@/
-    let l = line(".")
-    let c = col(".")
-    %s/\s\+$//e
-    let @/=_s
-    call cursor(l, c)
-endfunction
-
-function! <SID>CleanFile()
-    " Preparation: save last search, and cursor position.
-    let _s=@/
-    let l = line(".")
-    let c = col(".")
-    " Do the business:
-    %!git stripspace
-    " Clean up: restore previous search history, and cursor position
-    let @/=_s
-    call cursor(l, c)
-endfunction
- 
-function! s:NextTextObject(motion, dir)
-  let c = nr2char(getchar())
- 
-  if c ==# "b"
-      let c = "("
-  elseif c ==# "B"
-      let c = "{"
-  elseif c ==# "r"
-      let c = "["
-  endif
- 
-  exe "normal! ".a:dir.c."v".a:motion.c
-endfunction
 " }}}
 
 set foldmethod=marker
