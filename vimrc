@@ -22,7 +22,7 @@ Bundle 'ervandew/supertab'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'scrooloose/nerdtree'
 Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
+Plugin 'hallison/vim-markdown'
 call vundle#end()                           " required
 filetype plugin indent on
 " }}}
@@ -127,6 +127,18 @@ set autoread
 map j gj
 map k gk
 map <leader>ss :setlocal spell!<cr>0
+"}}}
+"Custom function{{{
+" toggle between number and relativenumber
+function! ToggleNumber()
+    if(&relativenumber == 1)
+        set norelativenumber
+        set number
+    else
+        set relativenumber
+    endif
+endfunc
+
 "}}}
 set foldmethod=marker
 set foldlevel=0
