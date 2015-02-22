@@ -19,7 +19,6 @@ Plugin 'scrooloose/syntastic'
 Plugin 'jcf/vim-latex'
 Bundle 'ervandew/supertab'
 Bundle 'Valloric/YouCompleteMe'
-Bundle 'bling/vim-airline'                  
 call vundle#end()                           " required
 filetype plugin indent on
 " }}}
@@ -95,7 +94,7 @@ set iskeyword+=:
 let g:syntastic_python_flake8_args='--ignore=E501'
 let g:syntastic_ignore_files = ['.java$']
 " }}}
-" make YCM compatible with UltiSnips (using supertab)
+" make YCM compatible with UltiSnips (using supertab){{{
 let g:ycm_key_list_select_completion = ['<Down>']
 let g:ycm_key_list_previous_completion = ['<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
@@ -106,9 +105,15 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
-" }}}
 
+" }}}
+" Powerline (Status bar){{{
+set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
+" Always show statusline
+set laststatus=2
+"}}}
 set foldmethod=marker
 set foldlevel=0
 set modelines=1
+autocmd FileType c,cpp,java,php autocmd BufWritePre <buffer> :%s/\s\+$//e " remove unwanted whitespace
 " vim:foldmethod=marker:foldlevel=0
