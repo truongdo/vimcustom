@@ -145,6 +145,7 @@ endfunc
 set foldmethod=marker
 set foldlevel=0
 set modelines=1
-autocmd FileType c,cpp,java,php autocmd BufWritePre <buffer> :%s/\s\+$//e " remove unwanted whitespace
+autocmd FileType c,cpp,java,php,python autocmd BufWritePre <buffer> :%s/\s\+$//e " remove unwanted whitespace
+autocmd FileType c,cpp,java,php,python autocmd BufWritePre <buffer> :%s/\n\{4,}/\r\r/e " remove unwanted blank line
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 " vim:foldmethod=marker:foldlevel=0
