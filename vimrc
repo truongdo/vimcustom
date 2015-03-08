@@ -130,14 +130,17 @@ map j gj
 map k gk
 map <leader>ss :setlocal spell!<cr>0
 " 4 space indenting
-au FileType python,scons setlocal shiftwidth=4|setlocal softtabstop=4|setlocal tabstop=4
+autocmd FileType python,scons setlocal shiftwidth=4|setlocal softtabstop=4|setlocal tabstop=4
 
-au FileType tex,latex setlocal linebreak
-au FileType text setlocal linebreak|setlocal showbreak=\ \
+autocmd FileType tex,latex setlocal linebreak
+autocmd FileType text setlocal linebreak|setlocal showbreak=\ \
 
 " 79 width
-au FileType python,rst setlocal textwidth=79|setlocal colorcolumn=79
-au FileType rst setlocal textwidth=79|setlocal colorcolumn=79
+autocmd FileType python,rst setlocal textwidth=79|setlocal colorcolumn=79
+autocmd FileType rst setlocal textwidth=79|setlocal colorcolumn=79
+
+let g:Tex_DefaultTargetFormat = 'pdf'
+let g:Tex_MultipleCompileFormats='pdf, aux'
 
 "}}}
 "Custom function{{{
