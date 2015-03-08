@@ -141,6 +141,7 @@ autocmd FileType rst setlocal textwidth=79|setlocal colorcolumn=79
 
 let g:Tex_DefaultTargetFormat = 'pdf'
 let g:Tex_MultipleCompileFormats='pdf, aux'
+let g:Tex_CompileRule_pdf='pdflatex -interaction=nonstopmode %'
 
 "}}}
 "Custom function{{{
