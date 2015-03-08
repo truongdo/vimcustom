@@ -74,7 +74,6 @@ nmap <silent> ,n :nohlsearch<CR>
 "=== folding ===
 set foldmethod=indent   " fold based on indent level
 set foldnestmax=10      " max 10 depth
-set foldenable          " don't fold files by default on open
 nnoremap <space> za
 set foldlevelstart=10    " start with fold level of 1
 " }}}
@@ -129,16 +128,6 @@ set autoread
 map j gj
 map k gk
 map <leader>ss :setlocal spell!<cr>0
-" 4 space indenting
-au FileType python,scons setlocal shiftwidth=4|setlocal softtabstop=4|setlocal tabstop=4
-
-au FileType tex,latex setlocal linebreak
-au FileType text setlocal linebreak|setlocal showbreak=\ \
-
-" 79 width
-au FileType python,rst setlocal textwidth=79|setlocal colorcolumn=79
-au FileType rst setlocal textwidth=79|setlocal colorcolumn=79
-
 "}}}
 "Custom function{{{
 " toggle between number and relativenumber
@@ -156,6 +145,6 @@ set foldmethod=marker
 set foldlevel=0
 set modelines=1
 autocmd FileType c,cpp,java,php,python autocmd BufWritePre <buffer> :%s/\s\+$//e " remove unwanted whitespace
-autocmd FileType c,cpp,java,php,python autocmd BufWritePre <buffer> :%s/\n\{4,}/\r\r/e " remove unwanted blank line
+autocmd FileType c,cpp,java,php,python autocmd BufWritePre <buffer> :%s/\n\{4,}/\r\r/e " remove blank lines
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 " vim:foldmethod=marker:foldlevel=0
