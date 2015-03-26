@@ -24,6 +24,8 @@ Bundle 'scrooloose/nerdtree'
 Plugin 'godlygeek/tabular'
 Plugin 'hallison/vim-markdown'
 Plugin 'aperezdc/vim-template'
+Plugin 'tmhedberg/SimpylFold'
+Plugin 'scrooloose/nerdcommenter'           " Commenter
 
 call vundle#end()                           " required
 filetype plugin indent on
@@ -72,11 +74,10 @@ nmap <silent> ,n :nohlsearch<CR>
 " }}}
 " Folding {{{
 "=== folding ===
-set foldmethod=indent   " fold based on indent level
+"set foldmethod=indent   " fold based on indent level
 set foldnestmax=10      " max 10 depth
-set foldenable          " don't fold files by default on open
+set foldmethod=syntax
 nnoremap <space> za
-set foldlevelstart=10    " start with fold level of 1
 " }}}
 " Leader Shortcuts {{{
 let mapleader=","
@@ -96,10 +97,16 @@ inoremap jk <esc>
 " Vim-latex setting
 let g:tex_flavor='latex'
 set iskeyword+=:
+let g:Tex_DefaultTargetFormat='pdf'
+let g:Tex_CompileRule_pdf='pdflatex -interaction=nonstopmode $*'
 " }}}
 " Syntastic {{{
 let g:syntastic_python_flake8_args='--ignore=E501'
 let g:syntastic_ignore_files = ['.java$']
+let g:syntastic_cpp_check_header = 1
+let g:ycm_show_diagnostics_ui = 0
+let g:syntastic_cpp_compiler = "g++"
+let g:syntastic_cpp_compiler_options = "-std=c++11 -Wall -Wextra -Wpedantic"
 " }}}
 " make YCM compatible with UltiSnips (using supertab){{{
 let g:ycm_key_list_select_completion = ['<Down>']
@@ -129,20 +136,12 @@ set autoread
 map j gj
 map k gk
 map <leader>ss :setlocal spell!<cr>0
-" 4 space indenting
-autocmd FileType python,scons setlocal shiftwidth=4|setlocal softtabstop=4|setlocal tabstop=4
-
-autocmd FileType tex,latex setlocal linebreak
-autocmd FileType text setlocal linebreak|setlocal showbreak=\ \
-
-" 79 width
-autocmd FileType python,rst setlocal textwidth=79|setlocal colorcolumn=79
-autocmd FileType rst setlocal textwidth=79|setlocal colorcolumn=79
-
-let g:Tex_DefaultTargetFormat = 'pdf'
-let g:Tex_MultipleCompileFormats='pdf, aux'
-let g:Tex_CompileRule_pdf='pdflatex -interaction=nonstopmode %'
-
+" Uncomment the following to have Vim jump to the last position when                                                       
+" reopening a file
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+    \| exe "normal! g'\"" | endif
+endif
 "}}}
 "Custom function{{{
 " toggle between number and relativenumber
@@ -156,10 +155,9 @@ function! ToggleNumber()
 endfunc
 
 "}}}
-set foldmethod=marker
+autocmd FileType vimrc setlocal foldmethod=marker
 set foldlevel=0
 set modelines=1
-autocmd FileType c,cpp,java,php,python autocmd BufWritePre <buffer> :%s/\s\+$//e " remove unwanted whitespace
-autocmd FileType c,cpp,java,php,python autocmd BufWritePre <buffer> :%s/\n\{4,}/\r\r/e " remove unwanted blank line
+autocmd FileType c,cpp,java,php autocmd BufWritePre <buffer> :%s/\s\+$//e " remove unwanted whitespace
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 " vim:foldmethod=marker:foldlevel=0
