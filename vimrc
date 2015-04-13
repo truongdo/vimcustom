@@ -158,6 +158,6 @@ endfunc
 autocmd FileType vimrc setlocal foldmethod=marker
 set foldlevel=0
 set modelines=1
-autocmd FileType c,cpp,java,php autocmd BufWritePre <buffer> :%s/\s\+$//e " remove unwanted whitespace
+autocmd BufWritePre <buffer> :%s/\s\+$//e " remove unwanted whitespace
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 " vim:foldmethod=marker:foldlevel=0
