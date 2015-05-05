@@ -24,7 +24,6 @@ Bundle 'scrooloose/nerdtree'
 Plugin 'godlygeek/tabular'
 Plugin 'hallison/vim-markdown'
 Plugin 'aperezdc/vim-template'
-Plugin 'klen/python-mode'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'scrooloose/nerdcommenter'           " Commenter
 
