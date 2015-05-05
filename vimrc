@@ -154,10 +154,17 @@ function! ToggleNumber()
     endif
 endfunc
 
+" Removes trailing spaces
+function! TrimWhiteSpace()
+    %s/\s\+$//e
+endfunction
 "}}}
 autocmd FileType vimrc setlocal foldmethod=marker
 set foldlevel=0
 set modelines=1
-autocmd BufWritePre <buffer> :%s/\s\+$//e " remove unwanted whitespace
+autocmd FileWritePre    * :call TrimWhiteSpace()
+autocmd FileAppendPre   * :call TrimWhiteSpace()
+autocmd FilterWritePre  * :call TrimWhiteSpace()
+autocmd BufWritePre     * :call TrimWhiteSpace()
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 " vim:foldmethod=marker:foldlevel=0
