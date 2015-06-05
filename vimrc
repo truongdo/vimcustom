@@ -167,8 +167,8 @@ autocmd FileAppendPre   * :call TrimWhiteSpace()
 autocmd FilterWritePre  * :call TrimWhiteSpace()
 autocmd BufWritePre     * :call TrimWhiteSpace()
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-" vim:foldmethod=marker:foldlevel=0
 " Useful map keys for editting
 " 1. Remove tabs (4 spaces)
 :map ,rt :s/^    //g <Enter>
 :map ,t :s/^/    /g <Enter>
+" vim:foldmethod=marker:foldlevel=0
