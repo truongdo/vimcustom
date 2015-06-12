@@ -15,6 +15,7 @@ Plugin 'jiangmiao/auto-pairs'               " Auto pair {} ()
 Plugin 'sjl/gundo.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'SirVer/ultisnips'
+Plugin 'bling/vim-airline'
 Plugin 'honza/vim-snippets'
 Plugin 'scrooloose/syntastic'
 Plugin 'jcf/vim-latex'
@@ -122,8 +123,12 @@ let g:UltiSnipsEditSplit="vertical"
 
 " }}}
 " Powerline (Status bar){{{
-set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
+" set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
 " Always show statusline
+" set laststatus=2
+"}}}
+" Vim-airline {{{
+let g:airline#extensions#enabled = 1
 set laststatus=2
 "}}}
 " NERDTree {{{
