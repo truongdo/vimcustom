@@ -140,6 +140,7 @@ set autoread
 " Treat long lines as break lines (useful when moving around in them)
 map j gj
 map k gk
+set spell
 map <leader>ss :setlocal spell!<cr>0
 " Uncomment the following to have Vim jump to the last position when                                                       
 " reopening a file
@@ -147,6 +148,7 @@ if has("autocmd")
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
     \| exe "normal! g'\"" | endif
 endif
+set fileencodings=ucs-bom,utf-8,euc-jp
 "}}}
 "Custom function{{{
 " toggle between number and relativenumber
