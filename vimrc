@@ -129,6 +129,7 @@ let g:UltiSnipsEditSplit="vertical"
 "}}}
 " Vim-airline {{{
 let g:airline#extensions#enabled = 1
+let g:airline_theme='kalisi'  " Fix the color of status bar that is difficult to see with solarized scheme
 set laststatus=2
 "}}}
 " NERDTree {{{
