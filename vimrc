@@ -10,6 +10,7 @@ call vundle#begin()
 " Load plugins {{{
 Bundle 'tpope/vim-fugitive'
 Plugin 'gmarik/Vundle.vim'
+Bundle 'nvie/vim-pyunit'
 Plugin 'rking/ag.vim'                       " Search
 Plugin 'jiangmiao/auto-pairs'               " Auto pair {} ()
 Plugin 'sjl/gundo.vim'
