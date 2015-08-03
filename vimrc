@@ -30,7 +30,6 @@ Plugin 'tmhedberg/SimpylFold'
 Plugin 'scrooloose/nerdcommenter'           " Commenter
 
 call vundle#end()                           " required
-filetype plugin indent on
 " }}}
 " Colors {{{
 syntax enable           " enable syntax processing
@@ -38,13 +37,11 @@ set background=dark     " light for light background
 colorscheme solarized
 " }}}
 " Spaces & Tabs {{{
-set tabstop=4           " 4 space tab
+set tabstop=2           " 4 space tab
 set expandtab           " use spaces for tabs
-set softtabstop=4       " 4 space tab
-set shiftwidth=4
+set softtabstop=2       " 4 space tab
+set shiftwidth=2
 set modelines=1
-filetype indent on
-filetype plugin on
 set autoindent
 " }}}
 " UI Layout {{{
@@ -86,10 +83,10 @@ let mapleader=","
 nnoremap <leader>w :NERDTree<CR>
 nnoremap <leader>u :GundoToggle<CR>
 nnoremap <leader>l :call ToggleNumber()<CR>
-nnoremap <leader>a :Ag 
+nnoremap <leader>a :Ag
 nnoremap <leader>c :SyntasticCheck<CR>:Errors<CR>
 nnoremap <leader>1 :set number!<CR>
-nnoremap <leader>d :Make! 
+nnoremap <leader>d :Make!
 nnoremap <leader>r :call RunTestFile()<CR>
 nnoremap <leader>g :call RunGoFile()<CR>
 vnoremap <leader>y "+y
@@ -116,8 +113,8 @@ let g:ycm_key_list_previous_completion = ['<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
 
 let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"                                       
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>" 
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
@@ -144,7 +141,7 @@ map j gj
 map k gk
 set spell
 map <leader>ss :setlocal spell!<cr>0
-" Uncomment the following to have Vim jump to the last position when                                                       
+" Uncomment the following to have Vim jump to the last position when
 " reopening a file
 if has("autocmd")
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
@@ -152,6 +149,23 @@ if has("autocmd")
 endif
 set fileencodings=ucs-bom,utf-8,euc-jp
 "}}}
+" Tabs and indentation{{{
+" by default, the indent is 2 spaces.
+set shiftwidth=2
+set softtabstop=2
+set tabstop=2
+
+" for html/rb files, 2 spaces
+autocmd Filetype html setlocal ts=2 sw=2 expandtab
+autocmd Filetype ruby setlocal ts=2 sw=2 expandtab
+autocmd Filetype tex setlocal ts=2 sw=2 expandtab
+
+" for js/coffee/jade files, 4 spaces
+autocmd Filetype javascript setlocal ts=4 sw=4 sts=0 expandtab
+autocmd Filetype coffeescript setlocal ts=4 sw=4 sts=0 expandtab
+autocmd Filetype jade setlocal ts=4 sw=4 sts=0 expandtab
+" }}}
+
 "Custom function{{{
 " toggle between number and relativenumber
 function! ToggleNumber()
@@ -176,6 +190,7 @@ autocmd FileAppendPre   * :call TrimWhiteSpace()
 autocmd FilterWritePre  * :call TrimWhiteSpace()
 autocmd BufWritePre     * :call TrimWhiteSpace()
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+filetype plugin indent on
 " Useful map keys for editting
 " 1. Remove tabs (4 spaces)
 :map ,rt :s/^    //g <Enter>
