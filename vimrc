@@ -98,6 +98,7 @@ let g:tex_flavor='latex'
 set iskeyword+=:
 let g:Tex_DefaultTargetFormat='pdf'
 let g:Tex_CompileRule_pdf='pdflatex -interaction=nonstopmode $*'
+let g:Tex_MultipleCompileFormats='pdf, aux'
 " }}}
 " Syntastic {{{
 let g:syntastic_python_flake8_args='--ignore=E501'
