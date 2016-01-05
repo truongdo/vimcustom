@@ -10,7 +10,6 @@ call vundle#begin()
 " Load plugins {{{
 Bundle 'tpope/vim-fugitive'
 Plugin 'gmarik/Vundle.vim'
-Bundle 'nvie/vim-pyunit'
 Plugin 'rking/ag.vim'                       " Search
 Plugin 'jiangmiao/auto-pairs'               " Auto pair {} ()
 Plugin 'sjl/gundo.vim'
@@ -152,14 +151,12 @@ set fileencodings=ucs-bom,utf-8,euc-jp
 "}}}
 " Tabs and indentation{{{
 " by default, the indent is 2 spaces.
-set shiftwidth=2
-set softtabstop=2
-set tabstop=2
 
 " for html/rb files, 2 spaces
 autocmd Filetype html setlocal ts=2 sw=2 expandtab
 autocmd Filetype ruby setlocal ts=2 sw=2 expandtab
 autocmd Filetype tex setlocal ts=2 sw=2 expandtab
+autocmd Filetype python setlocal ts=4 sw=4 expandtab
 
 " for js/coffee/jade files, 4 spaces
 autocmd Filetype javascript setlocal ts=4 sw=4 sts=0 expandtab
