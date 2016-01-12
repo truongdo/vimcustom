@@ -27,6 +27,7 @@ Plugin 'hallison/vim-markdown'
 Plugin 'aperezdc/vim-template'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'scrooloose/nerdcommenter'           " Commenter
+Plugin 'easymotion/vim-easymotion'
 
 call vundle#end()                           " required
 " }}}
