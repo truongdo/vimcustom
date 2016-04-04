@@ -126,6 +126,20 @@ let g:UltiSnipsEditSplit="vertical"
 " Always show statusline
 " set laststatus=2
 "}}}
+
+" Vim-easymotion{{{
+map <leader> <Plug>(easymotion-prefix)
+nmap s <Plug>(easymotion-s)
+let g:EasyMotion_smartcase = 1
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+"map <leader> <Plug>(easymotion-repeat)
+
+"}}}
+
+
 " Vim-airline {{{
 let g:airline#extensions#enabled = 1
 let g:airline_theme='kalisi'  " Fix the color of status bar that is difficult to see with solarized scheme
@@ -175,6 +189,11 @@ function! ToggleNumber()
         set relativenumber
     endif
 endfunc
+
+if has('persistent_undo')      "check if your vim version supports it                                                                                                                          
+  set undofile                 "turn on the feature                                                                                                                                            
+  set undodir=~/.vim/undo  "directory where the undo files will be stored                                                                                                                      
+endif 
 
 " Removes trailing spaces
 function! TrimWhiteSpace()
