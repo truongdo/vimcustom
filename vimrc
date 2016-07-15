@@ -28,6 +28,7 @@ Plugin 'aperezdc/vim-template'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'scrooloose/nerdcommenter'           " Commenter
 Plugin 'easymotion/vim-easymotion'
+Plugin 'rdnetto/YCM-Generator'
 
 call vundle#end()                           " required
 " }}}
@@ -37,10 +38,10 @@ set background=dark     " light for light background
 colorscheme solarized
 " }}}
 " Spaces & Tabs {{{
-set tabstop=2           " 4 space tab
+set tabstop=4           " 4 space tab
 set expandtab           " use spaces for tabs
-set softtabstop=2       " 4 space tab
-set shiftwidth=2
+set softtabstop=4       " 4 space tab
+set shiftwidth=4
 set modelines=1
 set autoindent
 " }}}
