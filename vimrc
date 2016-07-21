@@ -109,6 +109,11 @@ let g:syntastic_cpp_check_header = 1
 let g:ycm_show_diagnostics_ui = 0
 let g:syntastic_cpp_compiler = "g++"
 let g:syntastic_cpp_compiler_options = "-std=c++11 -Wall -Wextra -Wpedantic"
+
+" The following fix issue that vim get lagging while saving and opening files
+let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go']  }
+let g:go_list_type = "quickfix"
 " }}}
 " make YCM compatible with UltiSnips (using supertab){{{
 let g:ycm_key_list_select_completion = ['<Down>']
