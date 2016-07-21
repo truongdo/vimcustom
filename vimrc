@@ -8,6 +8,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " }}}
 " Load plugins {{{
+Plugin 'fatih/vim-go'
 Bundle 'tpope/vim-fugitive'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'rking/ag.vim'                       " Search
