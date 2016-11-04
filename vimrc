@@ -30,6 +30,7 @@ Plugin 'tmhedberg/SimpylFold'
 Plugin 'scrooloose/nerdcommenter'           " Commenter
 Plugin 'easymotion/vim-easymotion'
 Plugin 'rdnetto/YCM-Generator'
+Plugin 'xolox/vim-notes'
 
 call vundle#end()                           " required
 " }}}
@@ -109,6 +110,7 @@ let g:syntastic_cpp_check_header = 1
 let g:ycm_show_diagnostics_ui = 0
 let g:syntastic_cpp_compiler = "g++"
 let g:syntastic_cpp_compiler_options = "-std=c++11 -Wall -Wextra -Wpedantic"
+let g:notes_directories = ['~/CloudStation/Notes']  " For xolox/vim-note'
 
 " The following fix issue that vim get lagging while saving and opening files
 let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
@@ -175,14 +177,15 @@ set fileencodings=ucs-bom,utf-8,euc-jp
 " by default, the indent is 2 spaces.
 
 " for html/rb files, 2 spaces
-autocmd Filetype html setlocal ts=2 sw=2 expandtab
-autocmd Filetype ruby setlocal ts=2 sw=2 expandtab
-autocmd Filetype tex setlocal ts=2 sw=2 expandtab
+autocmd Filetype html setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+autocmd Filetype ruby setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+autocmd Filetype tex setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 autocmd Filetype python setlocal ts=4 sw=4 expandtab
 
 " for js/coffee/jade files, 4 spaces
 autocmd Filetype javascript setlocal ts=4 sw=4 sts=0 expandtab
 autocmd Filetype coffeescript setlocal ts=4 sw=4 sts=0 expandtab
+autocmd Filetype yaml setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 autocmd Filetype jade setlocal ts=4 sw=4 sts=0 expandtab
 " }}}
 
