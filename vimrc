@@ -177,15 +177,15 @@ set fileencodings=ucs-bom,utf-8,euc-jp
 " by default, the indent is 2 spaces.
 
 " for html/rb files, 2 spaces
-autocmd Filetype html setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
-autocmd Filetype ruby setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
-autocmd Filetype tex setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+autocmd Filetype html setlocal ts=2 sw=2 sts=2 expandtab
+autocmd Filetype yaml setlocal ts=2 sw=2 sts=2 expandtab
+autocmd Filetype ruby setlocal ts=2 sw=2 sts=2 expandtab
+autocmd Filetype tex setlocal ts=2 sw=2 sts=2 expandtab
 autocmd Filetype python setlocal ts=4 sw=4 expandtab
 
 " for js/coffee/jade files, 4 spaces
 autocmd Filetype javascript setlocal ts=4 sw=4 sts=0 expandtab
 autocmd Filetype coffeescript setlocal ts=4 sw=4 sts=0 expandtab
-autocmd Filetype yaml setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 autocmd Filetype jade setlocal ts=4 sw=4 sts=0 expandtab
 " }}}
 
